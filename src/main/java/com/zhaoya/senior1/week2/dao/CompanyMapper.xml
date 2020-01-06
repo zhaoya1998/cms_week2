@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhaoya.senior1.week2.dao.CompanyMapper">
+	<resultMap type="com.zhaoya.senior1.week2.domain.Company"
+		id="company">
+		<id column="id" property="id" />
+		<result column="keywords" property="keywords" />
+		<result column="description" property="description" />
+		<result column="name" property="name" />
+		<result column="goods" property="goods" />
+		<result column="addr" property="addr" />
+		<result column="price" property="price" />
+		<result column="date" property="date" />
+		<result column="check" property="check" />
+		<result column="status" property="status" />
+		<result column="beizhu" property="beizhu" />
+	</resultMap>
+
+
+	<select id="getCompanyList" resultType="company">
+		select * from company
+		<where>
+			<if test="id != null and id !=''">
+				and id=#{id}
+			</if>
+			<if test="keywords != null and keywords !=''">
+				and keywords like '%${keywords}%'
+			</if>
+			<if test="description != null and description !=''">
+				and description like '%${description}%'
+			</if>
+			<if test="name != null and name !=''">
+				and name like '%${name}%'
+			</if>
+			<if test="goods != null and goods !=''">
+				and goods like '%${goods}%'
+			</if>
+			<if test="addr != null and addr !=''">
+				and addr like '%${addr}%'
+			</if>
+			<if test="startPrice != null and startPrice !=''">
+				and price >=#{startPrice}
+			</if>
+			<if test="endPrice != null and endPrice !=''">
+				and price &lt;=#{endPrice}
+			</if>
+			<if test="startDate != null and startDate !=''">
+				and date >=#{startDate}
+			</if>
+			<if test="endDate != null and endDate !=''">
+				and date &lt;=#{endDate}
+			</if>
+			<if test="startCheck != null and startCheck !=''">
+				and check >=#{startCheck}
+			</if>
+			<if test="endCheck != null and endCheck !=''">
+				and check &lt;=#{endCheck}
+			</if>
+			<if test="status != null and status !=''">
+				and status like '%${status}%'
+			</if>
+		</where>
+	</select>
+
+	<insert id="insert">
+		insert into company
+		(id,keywords,description,name,goods,addr,price,date,status,beizhu)
+		values
+		<foreach collection="list" item="c" separator=",">
+			(#{c.id},#{c.keywords},#{c.description},#{c.name},#{c.goods},#{c.addr},#{c.price},#{c.date},#{c.status},#{c.beizhu})
+		</foreach>
+	</insert>
+	
+	<update id="update">
+	   update company set keywords=#{keywords},description=#{description},name=#{name},goods=#{goods},addr=#{addr},price=#{price},date=#{date},status=#{status},beizhu=#{beizhu} where id=#{id}
+	</update>
+	
+	<select id="getCompanyById" resultType="company">
+	   select * from company where id=#{id}
+	</select>
+</mapper>
