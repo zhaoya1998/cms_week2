@@ -36,6 +36,7 @@
   地址:<input type="text" name="addr" value="${vo.addr }">
   注册资本:<input type="text" name="startPrice" value="${vo.startPrice }">--<input type="text" name="endPrice" value="${vo.endPrice }">
   成立时间:<input type="text" name="startDate" value="${vo.startDate }">--<input type="text" name="endDate" value="${vo.endDate }">
+  年检日期:<input type="text" name="startCheck" value="${vo.startCheck }">--<input type="text" name="endCheck" value="${vo.endCheck }">
   状态:<select name="status">
 						<option value="通过">通过</option>
 						<option value="未通过">未通过</option>
