@@ -37,10 +37,10 @@
   注册资本:<input type="text" name="startPrice" value="${vo.startPrice }">--<input type="text" name="endPrice" value="${vo.endPrice }">
   成立时间:<input type="text" name="startDate" value="${vo.startDate }">--<input type="text" name="endDate" value="${vo.endDate }">
   状态:<select name="status">
-    <option value="1">通过</option>
-    <option value="0">未通过</option>
-    <option value="2">待定</option>
-  </select>
+						<option value="通过">通过</option>
+						<option value="未通过">未通过</option>
+						<option value="待定">待定</option>
+				</select>
    <input type="submit" value="查询">
 </form>
 	<table class="table table-dark"s">
